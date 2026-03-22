@@ -13,6 +13,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from modules.recommender import generate_lotto_numbers
 from modules.saju import calculate_saju, get_today_energy
+from modules.stats_loader import load_stats_from_supabase
 
 app = FastAPI(
     title="사주 로또 추천 API",
@@ -69,9 +70,8 @@ async def recommend_lotto(request: LottoRequest):
         # 기준일 설정
         target = request.target_date or date.today().isoformat()
         
-        # 임시 통계 (DB 연결 후 변경)
-        stats = {n: {"total_frequency": 200, "recent_5_frequency": 1} 
-                for n in range(1, 46)}
+        # Supabase에서 실제 통계 로드 (실패 시 더미 폴백)
+        stats = load_stats_from_supabase()
         
         # 추천 생성
         result = generate_lotto_numbers(

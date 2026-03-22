@@ -13,6 +13,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend'))
 
 from modules.recommender import generate_lotto_numbers
 from modules.saju import calculate_saju, get_today_energy
+from modules.stats_loader import load_stats_from_supabase
 
 
 class handler(BaseHTTPRequestHandler):
@@ -30,9 +31,8 @@ class handler(BaseHTTPRequestHandler):
                 self._send_json(400, {"error": "birth_date is required"})
                 return
 
-            # 임시 통계 (DB 연결 후 변경)
-            stats = {n: {"total_frequency": 200, "recent_5_frequency": 1}
-                     for n in range(1, 46)}
+            # Supabase에서 실제 통계 로드 (실패 시 더미 폴백)
+            stats = load_stats_from_supabase()
 
             result = generate_lotto_numbers(
                 birth_date=birth_date,
