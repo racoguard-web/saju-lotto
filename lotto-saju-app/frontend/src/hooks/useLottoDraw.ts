@@ -30,7 +30,8 @@ export function useLottoDraw() {
     setPhase("loading");
 
     try {
-      const res = await fetch("/api/v1/recommend", {
+      const apiUrl = import.meta.env.DEV ? "/api/v1/recommend" : "/api/recommend";
+      const res = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
