@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "remixicon/fonts/remixicon.css";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+@font-face {
+  font-family: 'YClover';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/YClover-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@theme {
+  --color-bg: #FFF8F0;
+  --color-bg-warm: #FFF0E0;
+  --color-surface: #ffffff;
+  --color-primary: #FF8C42;
+  --color-primary-dark: #E87830;
+  --color-primary-light: #FFB07A;
+  --color-secondary: #FFD166;
+  --color-accent: #FF6B8A;
+  --color-text: #3D2C2C;
+  --color-text-muted: #9B8A8A;
+  --color-text-dim: #C4B5B5;
+  --color-wood: #7BC67E;
+  --color-fire: #FF7B7B;
+  --color-earth: #E8C170;
+  --color-metal: #A8B8C8;
+  --color-water: #6BB8E0;
+  --color-card: #ffffff;
+  --color-card-border: #FFE8D6;
+  --font-family-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family-title: "YClover", "Pretendard", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family-sans);
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+#root { min-height: 100vh; }
+
+/* ===== Soft card ===== */
+.card {
+  background: white;
+  border-radius: 24px;
+  border: 2px solid var(--color-card-border);
+  box-shadow: 0 4px 20px rgba(255, 140, 66, 0.08);
+}
+
+/* ===== Lotto ball ===== */
+.lotto-ball {
+  position: relative;
+  border-radius: 50%;
+}
+.lotto-ball::after {
+  content: "";
+  position: absolute;
+  top: 14%;
+  left: 22%;
+  width: 28%;
+  height: 20%;
+  background: rgba(255,255,255,0.45);
+  border-radius: 50%;
+}
+
+/* ===== CTA Button ===== */
+.cta-btn {
+  background: linear-gradient(135deg, #FF8C42 0%, #FF6B8A 100%);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-weight: 800;
+  box-shadow: 0 4px 15px rgba(255, 107, 138, 0.3);
+  transition: all 0.2s ease;
+}
+.cta-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 138, 0.4);
+}
+.cta-btn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(255, 107, 138, 0.3);
+}
+.cta-btn:disabled {
+  background: #e0d5cc;
+  box-shadow: none;
+  color: #b8a8a0;
+}
+
+input[type="date"] { color-scheme: light; }
+
+/* ===== Bounce animation ===== */
+@keyframes cat-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes cat-celebrate {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-8deg) scale(1.05); }
+  50% { transform: rotate(8deg) scale(1.1); }
+  75% { transform: rotate(-5deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+@keyframes paw-reach {
+  0% { transform: translateY(0) rotate(0deg); }
+  40% { transform: translateY(15px) rotate(10deg); }
+  70% { transform: translateY(15px) rotate(-5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+@keyframes sparkle-pop {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+  100% { transform: scale(0) rotate(360deg); opacity: 0; }
+}

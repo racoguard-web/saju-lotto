@@ -1,0 +1,51 @@
+# Environment variables
+.env
+.env.*
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.egg
+dist/
+build/
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Build
+*.tsbuildinfo
+
+# Claude
+.claude/
