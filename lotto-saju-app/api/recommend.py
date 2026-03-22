@@ -62,7 +62,16 @@ class handler(BaseHTTPRequestHandler):
             self._send_json(200, response)
 
         except Exception as e:
-            self._send_json(500, {"error": str(e)})
+            # 디버그: 환경변수 존재 여부 확인
+            url_exists = bool(os.getenv("SUPABASE_URL"))
+            key_exists = bool(os.getenv("SUPABASE_ANON_KEY"))
+            key_prefix = (os.getenv("SUPABASE_ANON_KEY") or "")[:10]
+            self._send_json(500, {
+                "error": str(e),
+                "debug_url_set": url_exists,
+                "debug_key_set": key_exists,
+                "debug_key_prefix": key_prefix,
+            })
 
     def do_OPTIONS(self):
         self.send_response(200)
